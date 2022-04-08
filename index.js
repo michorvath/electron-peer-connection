@@ -1,7 +1,8 @@
 /* eslint-disable */
 const ipcRenderer = require('electron').ipcRenderer;
 const ipcMain = require('electron').ipcMain;
-const { getGlobal } = require('@electron/remote');
+const isRenderer = (typeof process === 'undefined' || !process || process.type === 'renderer');
+const { getGlobal } = require(`@electron/remote${isRenderer ? '' : '/main'}`);
 const events = require('events');
 
 /**
