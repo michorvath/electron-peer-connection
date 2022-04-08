@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron": "*"
+    "electron": "*",
+    "@electron/remote": "*"
   }
 }

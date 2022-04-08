@@ -1,7 +1,7 @@
 /* eslint-disable */
 const ipcRenderer = require('electron').ipcRenderer;
 const ipcMain = require('electron').ipcMain;
-const remote = require('electron').remote;
+const { getGlobal } = require('@electron/remote');
 const events = require('events');
 
 /**
@@ -80,7 +80,7 @@ function WindowPeerConnection (windowName) {
     this.windowName = windowName;
     this.remoteStream = null;
     let thisObj = this;
-    let clients = remote.getGlobal('clients');
+    let clients = getGlobal('clients');
     events.EventEmitter.call(this);
     log(thisObj.windowName + ": peer connection object");
 
@@ -249,4 +249,3 @@ WindowPeerConnection.prototype.__proto__ = events.EventEmitter.prototype;
 
 module.exports.main = main;
 module.exports.WindowPeerConnection = WindowPeerConnection;
-
